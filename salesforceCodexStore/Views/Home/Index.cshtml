@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<h1>All Products</h1>
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 300px;
+        margin: auto;
+        text-align: center;
+        font-family: arial;
+    }
+
+    .price {
+        color: grey;
+        font-size: 22px;
+    }
+
+    .card button {
+        border: none;
+        outline: 0;
+        padding: 12px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+    }
+
+        .card button:hover {
+            opacity: 0.7;
+        }
+</style>
+
+@foreach (var prd in Model.records)
+{
+
+    <div style="display: inline-block">
+
+        <div class="card">
+            <img src=@prd.Image__c alt="Denim Jeans" style="height:180px;width:auto;margin:10px">
+            <h1>@prd.Name</h1>
+            <p class="price">@prd.UnitPrice__c</p>
+            <p><button class="button" type="button" title="Add to Cart" value="Add to Cart" onclick="location.href='@Url.Action("Product", "Home", new { id = @prd.Id,image=prd.Image__c,quantity=@prd.Quantity__c,name=prd.Name})'" >Checkout Product</button>  </p>
+        </div>
+    </div>
+}

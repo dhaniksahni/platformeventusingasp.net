@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Product Store";
+}
+
+<h1>Student</h1>
+<table>
+    
+    @foreach (var student in Model.Records)
+    {
+        <tr>
+            <td>@student.Name</td>
+            <td>@student.UnitPrice__c</td>
+            <td>@student.Quantity__c</td>
+        </tr>
+    }
+</table>
